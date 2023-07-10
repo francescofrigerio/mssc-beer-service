@@ -4,6 +4,7 @@ package guru.sfg.brewery.model;
 import com.fasterxml.jackson.annotation.JsonCreator;
 import com.fasterxml.jackson.annotation.JsonProperty;
 import com.fasterxml.jackson.databind.JsonNode;
+import org.springframework.boot.autoconfigure.data.web.SpringDataWebProperties;
 import org.springframework.data.domain.PageImpl;
 import org.springframework.data.domain.PageRequest;
 import org.springframework.data.domain.Pageable;
@@ -14,11 +15,13 @@ import java.util.List;
 /**
  * Created by jt on 2019-05-12.
  */
+// Oggetto lista impaginabile di Spring
+    /*
 public class BeerPagedList extends PageImpl<BeerDto> implements Serializable {
 
     static final long serialVersionUID = 1114715135625836949L;
 
-    @JsonCreator(mode = JsonCreator.Mode.PROPERTIES)
+    //@JsonCreator(mode = JsonCreator.Mode.PROPERTIES)
     public BeerPagedList(@JsonProperty("content") List<BeerDto> content,
                          @JsonProperty("number") int number,
                          @JsonProperty("size") int size,
@@ -32,6 +35,18 @@ public class BeerPagedList extends PageImpl<BeerDto> implements Serializable {
 
         super(content, PageRequest.of(number, size), totalElements);
     }
+
+    public BeerPagedList(List<BeerDto> content, Pageable pageable, long total) {
+        super(content, pageable, total);
+    }
+
+    public BeerPagedList(List<BeerDto> content) {
+        super(content);
+    }
+}
+*/
+
+public class BeerPagedList extends   PageImpl<BeerDto>  {
 
     public BeerPagedList(List<BeerDto> content, Pageable pageable, long total) {
         super(content, pageable, total);

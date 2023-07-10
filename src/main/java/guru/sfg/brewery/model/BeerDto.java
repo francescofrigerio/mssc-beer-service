@@ -18,8 +18,12 @@ import java.util.UUID;
 /**
  * Created by jt on 2019-05-12.
  */
-
-@Data
+    // vedere lo schema nella documentazione online
+    // al path https://sfg-beer-works.github.io/brewery-api/#tag/Beer-Service
+    // sotto il metodo getBeerById e lo schemma nella Response
+    // tramite questo schema online della response
+    // e' possibile creare l'oggetto Pojo
+@Data // getters setters equals hashcode
 @NoArgsConstructor
 @AllArgsConstructor
 @Builder
@@ -33,6 +37,7 @@ public class BeerDto implements Serializable  {
     @Null
     private Integer version;
 
+    // The class include UTC Offeset
     @Null
     @JsonFormat(pattern="yyyy-MM-dd'T'HH:mm:ssZ", shape=JsonFormat.Shape.STRING)
     private OffsetDateTime createdDate;
