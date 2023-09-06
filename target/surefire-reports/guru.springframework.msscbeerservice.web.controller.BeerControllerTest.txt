@@ -1,0 +1,19 @@
+-------------------------------------------------------------------------------
+Test set: guru.springframework.msscbeerservice.web.controller.BeerControllerTest
+-------------------------------------------------------------------------------
+Tests run: 3, Failures: 0, Errors: 3, Skipped: 0, Time elapsed: 2.187 s <<< FAILURE! - in guru.springframework.msscbeerservice.web.controller.BeerControllerTest
+updateBeerById  Time elapsed: 0 s  <<< ERROR!
+java.util.ServiceConfigurationError: com.fasterxml.jackson.databind.Module: com.fasterxml.jackson.datatype.jsr310.JavaTimeModule Unable to get public no-arg constructor
+Caused by: java.lang.NoClassDefFoundError: com/fasterxml/jackson/databind/ser/std/ToStringSerializerBase
+Caused by: java.lang.ClassNotFoundException: com.fasterxml.jackson.databind.ser.std.ToStringSerializerBase
+
+saveNewBeer  Time elapsed: 0 s  <<< ERROR!
+java.util.ServiceConfigurationError: com.fasterxml.jackson.databind.Module: com.fasterxml.jackson.datatype.jsr310.JavaTimeModule Unable to get public no-arg constructor
+Caused by: java.lang.NoClassDefFoundError: com/fasterxml/jackson/databind/ser/std/ToStringSerializerBase
+Caused by: java.lang.ClassNotFoundException: com.fasterxml.jackson.databind.ser.std.ToStringSerializerBase
+
+getBeerById  Time elapsed: 0 s  <<< ERROR!
+java.util.ServiceConfigurationError: com.fasterxml.jackson.databind.Module: com.fasterxml.jackson.datatype.jsr310.JavaTimeModule Unable to get public no-arg constructor
+Caused by: java.lang.NoClassDefFoundError: com/fasterxml/jackson/databind/ser/std/ToStringSerializerBase
+Caused by: java.lang.ClassNotFoundException: com.fasterxml.jackson.databind.ser.std.ToStringSerializerBase
+
