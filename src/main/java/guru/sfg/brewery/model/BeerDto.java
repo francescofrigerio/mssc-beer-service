@@ -31,6 +31,15 @@ public class BeerDto implements Serializable  {
 
     static final long serialVersionUID = -5815566940065181210L;
 
+    // LEZIONE 70 Aggiungo dei constraints
+    // che sono un codice difensivo rispetto
+    // a qualche malintenzionato che volesse
+    // disturbare la logica di business
+    // Ci saranno proprieta di sola lettura sul client
+    // e alcune proprieta inizializzate a null
+    // quando facciamo la bind(costruzione)
+    // dell'istanza della classe dentro java
+    // e' richiesto che alcuni valori saranno null
     @Null
     private UUID id;
 
@@ -52,7 +61,9 @@ public class BeerDto implements Serializable  {
     @NotNull
     private BeerStyleEnum beerStyle;
 
+    // LEZIONE 70
     @NotNull
+    //@Positive
     private String upc;
 
     @JsonFormat(shape = JsonFormat.Shape.STRING)

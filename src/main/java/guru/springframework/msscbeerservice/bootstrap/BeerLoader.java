@@ -12,6 +12,19 @@ import java.math.BigDecimal;
 /**
  * Created by jt on 2019-05-17.
  */
+// LEZIONE 60
+    // Ci sono diversi modi di metterlo
+    // in esecuzione ma uno dei  modi più facili
+    // e' quello di implementare l'interfaccia CommandLineRunner
+    // e di annotarlo come component
+    // Allo starup perchè è un component si spring
+    // viene caricato e raccolto dal contesto di Spring
+    // Inoltre Spring inietterà l'istanza del repository
+    // dichiarato final nel costruttore che si potrebbe
+    // anche scrivere in alternativa all'annotazione RequiredArgsConstructor
+    // Poi ci verrà messo
+    // in esecuzione il metodo loader tramite il metodo run
+    // dell'interfaccia CommandLineRunner
 @RequiredArgsConstructor
 @Component
 public class BeerLoader implements CommandLineRunner {
@@ -20,17 +33,23 @@ public class BeerLoader implements CommandLineRunner {
     public static final String BEER_2_UPC = "0631234300019";
     public static final String BEER_3_UPC = "0083783375213";
 
+    // Istanza del repository
     private final BeerRepository beerRepository;
 
+    // Implemento il metodo run dell'interfaccia CommandLineRunner
     @Override
     public void run(String... args) throws Exception {
 
+        // Se non ci sono dati li carico dal db
           if(beerRepository.count() == 0 ) {
               loadBeerObjects();
           }
     }
 
     private void loadBeerObjects() {
+
+        // Specifico tutti i campi gestiti
+        // da hibernate tramite il pattern builder
         Beer b1 = Beer.builder()
                 .beerName("Mango Bobs")
                 .beerStyle(BeerStyleEnum.IPA.name())
@@ -61,5 +80,7 @@ public class BeerLoader implements CommandLineRunner {
         beerRepository.save(b1);
         beerRepository.save(b2);
         beerRepository.save(b3);
+
+        System.out.println("[loadBeerObjects] count obj " + beerRepository.count());
     }
 }

@@ -81,6 +81,8 @@ public class BeerController {
     @PostMapping(path = "beer")
     // ATTENZIONE ad aggiungere RequestBody
     //public ResponseEntity saveNewBeer(@RequestBody BeerDto beerDto){
+    // LEZIONE 71 AGGIUNGO Validatazione dei BEan e Gestione errori
+    // IN MODO CHE COSTRUISCO BeerDto IN MODO SICURO
     public ResponseEntity saveNewBeer(@RequestBody @Validated BeerDto beerDto){
         // todo impl senza chiamare il servizio
         //return new ResponseEntity(HttpStatus.CREATED);
@@ -89,6 +91,8 @@ public class BeerController {
 
     @PutMapping("beer/{beerId}")
     //public ResponseEntity updateBeerById(@PathVariable("beerId") UUID beerId, @RequestBody BeerDto beerDto){
+    // LEZIONE 71 AGGIUNGO Validatazione dei BEan e Gestione errori
+    // IN MODO CHE COSTRUISCO BeerDto IN MODO SICURO
     public ResponseEntity updateBeerById(@PathVariable("beerId") UUID beerId, @RequestBody @Validated BeerDto beerDto){
         // todo impl senza chiamare il servizio
         //return new ResponseEntity(HttpStatus.NO_CONTENT);
