@@ -6,6 +6,7 @@ import lombok.Builder;
 import lombok.Data;
 import lombok.NoArgsConstructor;
 
+
 import javax.validation.constraints.NotBlank;
 import javax.validation.constraints.NotNull;
 import javax.validation.constraints.Null;
@@ -48,10 +49,12 @@ public class BeerDto implements Serializable  {
 
     // The class include UTC Offeset
     @Null
+    // LEZIONE 114 Aggiungo specifiche per json
     @JsonFormat(pattern="yyyy-MM-dd'T'HH:mm:ssZ", shape=JsonFormat.Shape.STRING)
     private OffsetDateTime createdDate;
 
     @Null
+    // LEZIONE 114 Aggiungo specifiche per json
     @JsonFormat(pattern="yyyy-MM-dd'T'HH:mm:ssZ", shape=JsonFormat.Shape.STRING)
     private OffsetDateTime lastModifiedDate;
 
@@ -66,6 +69,7 @@ public class BeerDto implements Serializable  {
     //@Positive
     private String upc;
 
+    // LEZIONE 114 Aggiungo specifiche per json
     @JsonFormat(shape = JsonFormat.Shape.STRING)
     @Positive
     @NotNull

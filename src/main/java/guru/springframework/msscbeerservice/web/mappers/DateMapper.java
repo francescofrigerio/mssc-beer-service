@@ -9,6 +9,7 @@ import java.time.ZoneOffset;
 /**
  * Created by jt on 2019-05-25.
  */
+// LEZIONE 83
 @Component
 public class DateMapper {
     public OffsetDateTime asOffsetDateTime(Timestamp ts){

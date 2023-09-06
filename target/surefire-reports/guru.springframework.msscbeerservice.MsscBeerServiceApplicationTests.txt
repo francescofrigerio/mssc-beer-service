@@ -1,9 +1,23 @@
 -------------------------------------------------------------------------------
 Test set: guru.springframework.msscbeerservice.MsscBeerServiceApplicationTests
 -------------------------------------------------------------------------------
-Tests run: 1, Failures: 0, Errors: 1, Skipped: 0, Time elapsed: 4.064 s <<< FAILURE! - in guru.springframework.msscbeerservice.MsscBeerServiceApplicationTests
-contextLoads  Time elapsed: 0.01 s  <<< ERROR!
-java.util.ServiceConfigurationError: com.fasterxml.jackson.databind.Module: com.fasterxml.jackson.datatype.jsr310.JavaTimeModule Unable to get public no-arg constructor
-Caused by: java.lang.NoClassDefFoundError: com/fasterxml/jackson/databind/ser/std/ToStringSerializerBase
-Caused by: java.lang.ClassNotFoundException: com.fasterxml.jackson.databind.ser.std.ToStringSerializerBase
+Tests run: 1, Failures: 0, Errors: 1, Skipped: 0, Time elapsed: 1.252 s <<< FAILURE! - in guru.springframework.msscbeerservice.MsscBeerServiceApplicationTests
+contextLoads  Time elapsed: 0.009 s  <<< ERROR!
+java.lang.IllegalStateException: Failed to load ApplicationContext
+Caused by: java.lang.IllegalStateException: 
+Logback configuration error detected: 
+ERROR in ch.qos.logback.core.joran.action.NestedComplexPropertyIA - Could not create component [encoder] of type [net.logstash.logback.encoder.LoggingEventCompositeJsonEncoder] java.lang.ClassNotFoundException: net.logstash.logback.encoder.LoggingEventCompositeJsonEncoder
+ERROR in ch.qos.logback.core.joran.spi.Interpreter@14:24 - no applicable action for [providers], current ElementPath  is [[configuration][appender][encoder][providers]]
+ERROR in ch.qos.logback.core.joran.spi.Interpreter@15:28 - no applicable action for [timestamp], current ElementPath  is [[configuration][appender][encoder][providers][timestamp]]
+ERROR in ch.qos.logback.core.joran.spi.Interpreter@16:31 - no applicable action for [timeZone], current ElementPath  is [[configuration][appender][encoder][providers][timestamp][timeZone]]
+ERROR in ch.qos.logback.core.joran.spi.Interpreter@18:27 - no applicable action for [version], current ElementPath  is [[configuration][appender][encoder][providers][version]]
+ERROR in ch.qos.logback.core.joran.spi.Interpreter@19:28 - no applicable action for [logLevel], current ElementPath  is [[configuration][appender][encoder][providers][logLevel]]
+ERROR in ch.qos.logback.core.joran.spi.Interpreter@20:27 - no applicable action for [message], current ElementPath  is [[configuration][appender][encoder][providers][message]]
+ERROR in ch.qos.logback.core.joran.spi.Interpreter@21:30 - no applicable action for [loggerName], current ElementPath  is [[configuration][appender][encoder][providers][loggerName]]
+ERROR in ch.qos.logback.core.joran.spi.Interpreter@22:30 - no applicable action for [threadName], current ElementPath  is [[configuration][appender][encoder][providers][threadName]]
+ERROR in ch.qos.logback.core.joran.action.NestedComplexPropertyIA - Could not find an appropriate class for property [context]
+ERROR in ch.qos.logback.core.joran.spi.Interpreter@24:26 - no applicable action for [pattern], current ElementPath  is [[configuration][appender][encoder][providers][pattern]]
+ERROR in ch.qos.logback.core.joran.spi.Interpreter@25:38 - no applicable action for [omitEmptyFields], current ElementPath  is [[configuration][appender][encoder][providers][pattern][omitEmptyFields]]
+ERROR in ch.qos.logback.core.joran.spi.Interpreter@26:30 - no applicable action for [pattern], current ElementPath  is [[configuration][appender][encoder][providers][pattern][pattern]]
+ERROR in ch.qos.logback.core.ConsoleAppender[jsonConsole] - No encoder set for the appender named "jsonConsole".
 

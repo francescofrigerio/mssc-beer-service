@@ -35,8 +35,8 @@ class BeerControllerTest {
     @MockBean
     BeerService beerService;
 
-    @Test
-    void getBeerById() throws Exception {
+    //@Test
+    void getBeerByIdOldErr() throws Exception {
 
         boolean lezione71 = true ;
 
@@ -54,9 +54,13 @@ class BeerControllerTest {
 
     }
 
-    @Test
-    void saveNewBeer() throws Exception {
+    //@Test
+    void saveNewBeerOldErr() throws Exception {
 
+        // LEZIONE 84
+        // Non puo' essere un oggetto a causa
+        // dei vincoli che abbiamo messo nella classe BeerDto
+        // Viene pertanto creato un oggetto e ritornato
         BeerDto beerDto = getValidBeerDto();
         String beerDtoJson = objectMapper.writeValueAsString(beerDto);
 
@@ -74,6 +78,56 @@ class BeerControllerTest {
 
     }
 
+    //@Test
+    void updateBeerByIdOldErr() throws Exception {
+        given(beerService.updateBeer(any(), any())).willReturn(getValidBeerDto());
+
+        // LEZIONE 84
+        // Non puo' essere un oggetto a causa
+        // dei vincoli che abbiamo messo nella classe BeerDto
+        // Viene pertanto creato un oggetto e ritornato
+        BeerDto beerDto = getValidBeerDto();
+        String beerDtoJson = objectMapper.writeValueAsString(beerDto);
+
+        mockMvc.perform(put("/api/v1/beer/" + UUID.randomUUID().toString())
+                .contentType(MediaType.APPLICATION_JSON)
+                .content(beerDtoJson))
+                .andExpect(status().isNoContent());
+    }
+
+    BeerDto getValidBeerDtoOldErr(){
+        return BeerDto.builder()
+                .beerName("My Beer")
+                .beerStyle(BeerStyleEnum.ALE)
+                .price(new BigDecimal("2.99"))
+                .upc(BeerLoader.BEER_1_UPC)
+                .build();
+    }
+
+    @Test
+    void getBeerById() throws Exception {
+
+        given(beerService.getById(any(), anyBoolean())).willReturn(getValidBeerDto());
+
+        mockMvc.perform(get("/api/v1/beer/" + UUID.randomUUID().toString()).accept(MediaType.APPLICATION_JSON))
+                .andExpect(status().isOk());
+
+    }
+
+    @Test
+    void saveNewBeer() throws Exception {
+
+        BeerDto beerDto = getValidBeerDto();
+        String beerDtoJson = objectMapper.writeValueAsString(beerDto);
+
+        given(beerService.saveNewBeer(any())).willReturn(getValidBeerDto());
+
+        mockMvc.perform(post("/api/v1/beer/")
+                        .contentType(MediaType.APPLICATION_JSON)
+                        .content(beerDtoJson))
+                .andExpect(status().isCreated());
+    }
+
     @Test
     void updateBeerById() throws Exception {
         given(beerService.updateBeer(any(), any())).willReturn(getValidBeerDto());
@@ -82,8 +136,8 @@ class BeerControllerTest {
         String beerDtoJson = objectMapper.writeValueAsString(beerDto);
 
         mockMvc.perform(put("/api/v1/beer/" + UUID.randomUUID().toString())
-                .contentType(MediaType.APPLICATION_JSON)
-                .content(beerDtoJson))
+                        .contentType(MediaType.APPLICATION_JSON)
+                        .content(beerDtoJson))
                 .andExpect(status().isNoContent());
     }
 
